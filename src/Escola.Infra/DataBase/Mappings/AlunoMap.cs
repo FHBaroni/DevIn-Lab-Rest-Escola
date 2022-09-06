@@ -1,7 +1,7 @@
-using System.Security.Cryptography.X509Certificates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Escola.Domain.Models;
 using Microsoft.EntityFrameworkCore;
@@ -40,15 +40,15 @@ namespace Escola.Infra.DataBase.Mappings
             builder.Property(x => x.DataNascimento)
                     .HasColumnName("DATA_NASCIMENTO")
                     .HasColumnType("DATE");
-            
 
-             builder.Property(x => x.Matricula)
-                    .HasColumnName("Matricula")
-                    .HasColumnType("int"); 
 
-             builder.HasIndex(x => x.Matricula).IsUnique();
+            builder.Property(x => x.Matricula)
+                   .HasColumnName("Matricula")
+                   .HasColumnType("int");
 
-            
+            builder.HasIndex(x => x.Matricula).IsUnique();
+
+
         }
     }
 }

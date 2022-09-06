@@ -1,11 +1,10 @@
-using System.Net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
-using Escola.Domain.Exceptions;
 using Escola.Domain.DTO;
-using Newtonsoft.Json;
+using Escola.Domain.Exceptions;
 
 namespace Escola.Api.Config
 {
@@ -16,20 +15,22 @@ namespace Escola.Api.Config
         {
             _next = next;
         }
-        public async Task InvokeAsync (HttpContext context)
+        public async Task InvokeAsync(HttpContext context)
         {
-            try {
+            try
+            {
                 await _next(context);
             }
-            catch (Exception ex){
+            catch (Exception ex)
+            {
                 await TratamentoExcecao(context, ex);
             }
         }
 
-        private  Task TratamentoExcecao(HttpContext context, Exception ex)
+        private Task TratamentoExcecao(HttpContext context, Exception ex)
         {
-            HttpStatusCode status; 
-            string message; 
+            HttpStatusCode status;
+            string message;
 
             // switch(ex)
             // {
@@ -42,15 +43,18 @@ namespace Escola.Api.Config
             //         message = "Ocorreu um erro favor contactar a TI";
             //         break;
             // }
-            if (ex is DuplicadoException){
+            if (ex is DuplicadoException)
+            {
                 status = HttpStatusCode.NotAcceptable;
                 message = ex.Message;
             }
-            if (ex is EhMenorIdadeException){
+            else if (ex is EhMenorIdadeException)
+            {
                 status = HttpStatusCode.NotAcceptable;
                 message = ex.Message;
             }
-            else{
+            else
+            {
                 status = HttpStatusCode.InternalServerError;
                 message = "Ocorreu um erro favor contactar a TI";
 
@@ -58,7 +62,7 @@ namespace Escola.Api.Config
 
             var response = new ErrorDTO(message);
 
-            context.Response.StatusCode = (int) status;
+            context.Response.StatusCode = (int)status;
 
             return context.Response.WriteAsJsonAsync(response);
         }
