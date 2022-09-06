@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Escola.Infra.DataBase.Mappings
 {
-    internal class NotasMateriaMap : IEntityTypeConfiguration<NotasMateria>
+    public class NotasMateriaMap : IEntityTypeConfiguration<NotasMateria>
     {
         public void Configure(EntityTypeBuilder<NotasMateria> builder)
         {

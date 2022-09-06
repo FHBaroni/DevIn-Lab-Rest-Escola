@@ -12,20 +12,15 @@ namespace Escola.Infra.DataBase
 {
     public class EscolaDBContexto : DbContext
     {
-        /* private IConfiguration _configuration;
-         public EscolaDBContexto(IConfiguration configuration)
-         {
-             _configuration = configuration;
-
-         }*/
-
         public DbSet<Aluno> Alunos { get; set; }
+        public DbSet<Materia> Materias { get; set; }
+        public DbSet<Boletim> Boletins { get; set; }
+        public DbSet<NotasMateria> NotasMaterias { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            // optionsBuilder.UseSqlServer(_configuration.GetConnectionString("CONEXAO_BANCO"));
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=BD_DevIn-Lab-Rest2-Escola;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=BD_Escola;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

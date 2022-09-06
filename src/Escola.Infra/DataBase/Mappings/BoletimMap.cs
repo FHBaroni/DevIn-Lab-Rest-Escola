@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Escola.Infra.DataBase.Mappings
 {
-    internal class BoletimMap : IEntityTypeConfiguration<Boletim>
+    public class BoletimMap : IEntityTypeConfiguration<Boletim>
     {
         public void Configure(EntityTypeBuilder<Boletim> builder)
         {

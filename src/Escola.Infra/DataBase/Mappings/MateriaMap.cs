@@ -17,9 +17,9 @@ namespace Escola.Infra.DataBase.Mappings
 
             builder.HasKey(m => m.Id);
 
-            /*   builder.Property(m => m.Id)
-                      .UseIdentityColumn()
-                      .ValueGeneratedOnAdd();*/
+            builder.Property(m => m.Id)
+                   .UseIdentityColumn()
+                   .ValueGeneratedOnAdd();
 
             builder.Property(m => m.Nome)
                 .HasColumnName("NOME")
