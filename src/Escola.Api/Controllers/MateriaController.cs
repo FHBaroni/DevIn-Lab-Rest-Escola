@@ -18,6 +18,18 @@ namespace Escola.Api.Controllers
         {
             return Ok(_materiaServico.ObterTodos());
         }
-      
+
+        [HttpGet("{id}")]
+        public IActionResult ObterPorId(int id)
+        {
+            return Ok(_materiaServico.ObterPorId(id));
+        }
+
+        [HttpGet("{nome}")]
+        public IActionResult ObterPorNome(string nome)
+        {
+            var result = _materiaServico.ObterPorNome(nome);
+            return Ok(result);
+        }
     }
 }
