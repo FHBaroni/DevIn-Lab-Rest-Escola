@@ -22,9 +22,9 @@ namespace Escola.Infra.DataBase.Mappings
                    .ValueGeneratedOnAdd();
 
             builder.Property(m => m.Nome)
-                .HasColumnName("NOME")
-                .HasColumnType("VARCHAR")
-                .HasMaxLength(200);
+                .HasColumnType("varchar")
+                .HasMaxLength(80)
+                .HasColumnName("Nome");
         }
     }
 }

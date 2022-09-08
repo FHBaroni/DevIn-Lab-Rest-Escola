@@ -18,14 +18,17 @@ namespace Escola.Domain.Services
         {
             _materiaRepositorio = materiaRepositorio;
         }
-
+        public void Inserir(MateriaDTO materia)
+        {
+            _materiaRepositorio.Inserir(new Materia(materia));
+        }
         public void Atualizar(MateriaDTO materia)
         {
             var materiaDB = _materiaRepositorio.ObterPorId(materia.Id);
             materiaDB.Update(materia);
             _materiaRepositorio.Atualizar(materiaDB);
-
         }
+
 
         public void Excluir(int id)
         {
@@ -33,10 +36,6 @@ namespace Escola.Domain.Services
             _materiaRepositorio.Excluir(materia);
         }
 
-        public void Inserir(MateriaDTO materia)
-        {
-            _materiaRepositorio.Inserir(new Materia(materia));
-        }
 
         public IList<MateriaDTO> ObterPorNome(string nome)
         {
@@ -52,6 +51,21 @@ namespace Escola.Domain.Services
         public MateriaDTO ObterPorId(int id)
         {
             return new MateriaDTO(_materiaRepositorio.ObterPorId(id));
+        }
+
+        List<MateriaDTO> IMateriaServico.ObterPorNome(string nome)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IMateriaServico.Excluir(Materia materia)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IMateriaServico.Atualizar(Materia materia)
+        {
+            throw new NotImplementedException();
         }
     }
 }

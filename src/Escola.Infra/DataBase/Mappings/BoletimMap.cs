@@ -15,21 +15,21 @@ namespace Escola.Infra.DataBase.Mappings
         {
             builder.ToTable("Boletim");
 
-            builder.HasKey(b => b.Id)
-                   .HasName("PK_BoletimId");
+            builder.HasKey(b => b.Id);
 
             builder.Property(b => b.Id)
                    .UseIdentityColumn()
                    .ValueGeneratedOnAdd();
 
-            builder.Property(b => b.Periodo)
-                   .HasColumnName("PERIODO")
-                   .HasColumnType("VARCHAR")
-                   .HasMaxLength(80);
-
             builder.Property(b => b.Faltas)
-                   .HasColumnName("FALTAS")
-                   .HasColumnType("INT");
+                   .HasColumnName("Faltas")
+                   .HasColumnType("int");
+
+            builder.Property(b => b.Periodo)
+                   .HasColumnName("Periodo")
+                   .HasColumnType("varchar")
+                   .HasMaxLength(50);
+
 
             builder.HasOne(a => a.Aluno)
                 .WithMany(b => b.Boletins)

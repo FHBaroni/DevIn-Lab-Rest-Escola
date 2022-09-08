@@ -15,24 +15,24 @@ namespace Escola.Infra.DataBase.Mappings
         {
             builder.ToTable("NotasMateria");
 
-            builder.HasKey(n => n.Id);
+            builder.HasKey(x => x.Id);
 
 
-            builder.Property(n => n.Id)
+            builder.Property(x => x.Id)
                    .UseIdentityColumn()
                    .ValueGeneratedOnAdd();
 
-            builder.Property(n => n.Nota)
-                   .HasColumnName("NOTAS")
+            builder.Property(x => x.Nota)
+                   .HasColumnName("Notas")
                    .HasColumnType("float");
 
-            builder.HasOne(b => b.boletim)
-                   .WithMany(n => n.Notas)
-                   .HasForeignKey(b => b.BoletimId);
+            builder.HasOne(x => x.boletim)
+                   .WithMany(x => x.Notas)
+                   .HasForeignKey(x => x.BoletimId);
 
-            builder.HasOne(m => m.materia)
-                   .WithMany(n => n.NotasMaterias)
-                   .HasForeignKey(m => m.MateriaId);
+            builder.HasOne(x => x.materia)
+                   .WithMany(x => x.NotasMaterias)
+                   .HasForeignKey(x => x.MateriaId);
         }
     }
 }

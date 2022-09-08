@@ -39,8 +39,7 @@ namespace Escola.Infra.DataBase.Repositories
 
         public Materia ObterPorId(int id)
         {
-            return _contexto.Materias
-                            .Find(id);
+            return _contexto.Materias.Find(id);
         }
 
         public List<Materia> ObterPorNome(string nome)
@@ -50,10 +49,8 @@ namespace Escola.Infra.DataBase.Repositories
 
         public IList<Materia> ObterTodos()
         {
-            return _contexto.Materias
-                            .ToList();
+            return _contexto.Materias.ToList();
         }
-
 
 
     }

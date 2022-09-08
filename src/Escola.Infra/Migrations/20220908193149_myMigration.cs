@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Escola.Infra.Migrations
 {
-    public partial class myMigrations03 : Migration
+    public partial class myMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,7 +46,7 @@ namespace Escola.Infra.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AlunoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Periodo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Periodo = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
                     Faltas = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -66,7 +66,7 @@ namespace Escola.Infra.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nome = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,7 +81,7 @@ namespace Escola.Infra.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MateriaId = table.Column<int>(type: "int", nullable: false),
                     BoletimId = table.Column<int>(type: "int", nullable: false),
-                    Nota = table.Column<double>(type: "float", nullable: false)
+                    Notas = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,4 +1,5 @@
-﻿using Escola.Domain.Interfaces.Services;
+﻿using Escola.Domain.DTO;
+using Escola.Domain.Interfaces.Services;
 using Escola.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ namespace Escola.Api.Controllers
         {
             _materiaServico = materiaServico;
         }
+
         [HttpGet]
         public IActionResult ObterTodos()
         {
@@ -30,6 +32,14 @@ namespace Escola.Api.Controllers
         {
             var result = _materiaServico.ObterPorNome(nome);
             return Ok(result);
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] MateriaDTO materia)
+        {
+            _materiaServico.Inserir(materia);
+            return Ok();
+
         }
     }
 }

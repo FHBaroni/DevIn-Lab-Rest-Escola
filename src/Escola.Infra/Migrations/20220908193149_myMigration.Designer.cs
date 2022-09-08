@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Escola.Infra.Migrations
 {
     [DbContext(typeof(EscolaDBContexto))]
-    [Migration("20220906144146_myMigrations04")]
-    partial class myMigrations04
+    [Migration("20220908193149_myMigration")]
+    partial class myMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,16 +75,19 @@ namespace Escola.Infra.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Faltas")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Faltas");
 
                     b.Property<string>("Periodo")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("Periodo");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AlunoId");
 
-                    b.ToTable("Boletim");
+                    b.ToTable("Boletim", (string)null);
                 });
 
             modelBuilder.Entity("Escola.Domain.Models.Materia", b =>
@@ -96,11 +99,13 @@ namespace Escola.Infra.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)")
+                        .HasColumnName("Nome");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Materia");
+                    b.ToTable("Materia", (string)null);
                 });
 
             modelBuilder.Entity("Escola.Domain.Models.NotasMateria", b =>
@@ -118,7 +123,8 @@ namespace Escola.Infra.Migrations
                         .HasColumnType("int");
 
                     b.Property<double>("Nota")
-                        .HasColumnType("float");
+                        .HasColumnType("float")
+                        .HasColumnName("Notas");
 
                     b.HasKey("Id");
 
@@ -126,7 +132,7 @@ namespace Escola.Infra.Migrations
 
                     b.HasIndex("MateriaId");
 
-                    b.ToTable("NotasMateria");
+                    b.ToTable("NotasMateria", (string)null);
                 });
 
             modelBuilder.Entity("Escola.Domain.Models.Boletim", b =>

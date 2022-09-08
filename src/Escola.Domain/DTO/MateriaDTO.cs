@@ -9,6 +9,8 @@ namespace Escola.Domain.DTO
 {
     public class MateriaDTO
     {
+        public int Id { get; set; }
+        public string Nome { get; set; }       
         public MateriaDTO()
         {
 
@@ -19,7 +21,5 @@ namespace Escola.Domain.DTO
             Nome = materia.Nome;
         }
 
-        public int Id { get; set; }
-        public string Nome { get; set; }       
     }
 }
